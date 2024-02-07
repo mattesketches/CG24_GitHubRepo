@@ -14,7 +14,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(1000, 800, "indexed", NULL, NULL);
+    window = glfwCreateWindow(1000, 1000, "indexed", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -34,10 +34,11 @@ int main(void)
 
     /* create render data in RAM */
     GLuint positionAttribIndex = 0;
-    float positions[] = {   0.0, 0.0,  // 1st vertex
-                            0.5, 0.0,  // 2nd vertex
-                            0.5, 0.5,  // 3nd vertex
-                            0.0, 0.5  // 4th vertex
+    float positions[] = {   0.0, 0.0,   // 1st vertex
+                            0.5, 0.0,   // 2nd vertex
+                            0.5, 0.5,   // 3nd vertex
+                            0.0, 0.5,    // 4th vertex
+                            0.7, 0.7
     };
     /* create a buffer for the render data in video RAM */
     GLuint positionsBuffer;
@@ -54,8 +55,9 @@ int main(void)
     GLuint colorAttribIndex = 1;
     float colors[] =      { 1.0, 0.0, 0.0,  // 1st vertex
                             0.0, 1.0, 0.0,  // 2nd vertex
-                            0.0, 0.0, 1.0,   // 3rd vertex
-                            1.0, 1.0, 1.0   // 4th vertex
+                            0.0, 0.0, 1.0,  // 3rd vertex
+                            1.0, 1.0, 1.0,   // 4th vertex
+                            1.0, 1.0, 0.0
     };
     /* create a buffer for the render data in video RAM */
     GLuint colorsBuffer;
@@ -69,7 +71,7 @@ int main(void)
     /* specify the data format */
     glVertexAttribPointer(colorAttribIndex, 3, GL_FLOAT, false, 0, 0);
 
-    GLuint indices[] = { 0,1,2,0,2,3 };
+    GLuint indices[] = { 0,1,2,0,2,3,2,3,4 };
 
     GLuint indexBuffer;
     glCreateBuffers(1, &indexBuffer);
