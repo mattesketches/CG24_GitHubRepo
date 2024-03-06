@@ -1,3 +1,5 @@
+#define GLM_ENABLE_EXPERIMENTAL
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <string>
@@ -7,19 +9,12 @@
 #include "..\common\shaders.h"
 #include "..\common\simple_shapes.h"
 #include "..\common\matrix_stack.h"
-
-/* 
-GLM library for math  https://github.com/g-truc/glm 
-it's a header-only library. You can just copy the folder glm into 3dparty
-and set the path properly. 
-*/
 #include <glm/glm.hpp>  
 #include <glm/ext.hpp>  
 
 
 int main(void)
 {
-
     GLFWwindow* window;
 
     /* Initialize the library */
@@ -45,13 +40,13 @@ int main(void)
     basic_shader.create_program("shaders/basic.vert", "shaders/basic.frag");
 	
 
-	/* create a  cube   centered at the origin with side 2*/
-	renderable r_cube	= shape_maker::cube(0.5,0.3,0.0);
+	/* create a  cube centered at the origin with side 2*/
+	renderable r_cube = shape_maker::cube(0.5,0.3,0.0);
 
-	/* create a  cylinder with base on the XZ plane, and height=2*/
-	renderable r_cyl	= shape_maker::cylinder(30,0.2,0.1,0.5);
+	/* create a cylinder with base on the XZ plane, and height 2*/
+	renderable r_cyl = shape_maker::cylinder(30,0.2,0.1,0.5);
 
-	/* create a  rectangle with base on the XY plane, centered at the origin and side 2*/
+	/* create a rectangle with base on the XY plane, centered at the origin and side 2*/
 	renderable r_plane = shape_maker::quad();
 
 	check_gl_errors(__LINE__, __FILE__);
@@ -67,7 +62,7 @@ int main(void)
 	/*matrix to raise te car up (that is, along Y) */
 	glm::mat4 raiseY = glm::translate(glm::mat4(1.f), glm::vec3(0, 0.5, 0.0));
 
-	/* define a transformation that will be applyed the the body of the car */
+	/* define a transformation that will be applyed to the the body of the car */
 	glm::mat4 rotcar = glm::translate(glm::mat4(1.f), glm::vec3(0.0, 0.0, -2.0));
 	rotcar = glm::rotate(rotcar, -0.1f, glm::vec3(1.0, 0.0, 0.0));
 	rotcar = glm::translate(rotcar, glm::vec3(0.0, 0.0, 2.0));
@@ -139,6 +134,7 @@ int main(void)
 
 		stack.push();
 		stack.mult(cube_to_car_body);
+
 		/*draw the cube tranformed into the car's body*/
 		glUniformMatrix4fv(basic_shader["uModel"], 1, GL_FALSE, &stack.m()[0][0]);
 		glUniform3f(basic_shader["uColor"], 1.0,0.0,0.0);
@@ -178,6 +174,7 @@ int main(void)
         /* Poll for and process events */
         glfwPollEvents();
     }
+
 	glUseProgram(0);
     glfwTerminate();
     return 0;

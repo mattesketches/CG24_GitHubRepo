@@ -79,14 +79,14 @@ int main(void)
 	// pass it to the shader
 	glUniformMatrix4fv(basic_shader["uProj"], 1, GL_FALSE, &proj_matrix[0][0]);
 
-    glClearColor(1, 0, 0,1);
+    glClearColor(1, 0, 0, 1);
 	glEnable(GL_DEPTH_TEST);
 
 	float angle = 0;
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-		angle = ( 60.f*clock()/ CLOCKS_PER_SEC);
+		angle = ( 60.f*clock() / CLOCKS_PER_SEC);
 
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
