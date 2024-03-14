@@ -68,7 +68,7 @@ int main(void)
 	//view_matrix = glm::inverse(view_matrix);
 
 	// do the same by calling the lookAt function
-	glm::mat4 view_matrix = glm::lookAt(glm::vec3(0,3,2),glm::vec3(0.f,0.f,-2.f), glm::vec3(0.f,1,0));
+	glm::mat4 view_matrix = glm::lookAt(glm::vec3(0,3,2),glm::vec3(0.f,0.f,-2.f), glm::vec3(0.f,1.f,0.f));
 
 	// pass it to the shader
 	glUniformMatrix4fv(basic_shader["uView"], 1, GL_FALSE, &view_matrix[0][0]);
@@ -79,7 +79,7 @@ int main(void)
 	// pass it to the shader
 	glUniformMatrix4fv(basic_shader["uProj"], 1, GL_FALSE, &proj_matrix[0][0]);
 
-    glClearColor(1, 0, 0, 1);
+    glClearColor(0, 1, 1, 1);
 	glEnable(GL_DEPTH_TEST);
 
 	float angle = 0;

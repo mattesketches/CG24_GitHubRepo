@@ -57,7 +57,7 @@ int main(void)
 
 
     GLuint indices[] = { 0,1,2,0,2,3 };
-    r.add_indices< GLuint> (indices, 6, GL_TRIANGLES);
+    r.add_indices<GLuint> (indices, 6, GL_TRIANGLES);
 
     shader basic_shader;
     basic_shader.create_program("shaders/basic.vert", "shaders/basic.frag");
