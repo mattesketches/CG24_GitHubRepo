@@ -1,3 +1,5 @@
+#define GLM_ENABLE_EXPERIMENTAL
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <string>
@@ -8,12 +10,6 @@
 #include "..\common\shaders.h"
 #include "..\common\simple_shapes.h"
 #include "..\common\matrix_stack.h"
-
-/*
-GLM library for math  https://github.com/g-truc/glm
-it's a header-only library. You can just copy the folder glm into 3dparty
-and set the path properly.
-*/
 #include <glm/glm.hpp>  
 #include <glm/ext.hpp>  
 #include <glm/gtx/string_cast.hpp>
